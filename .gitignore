@@ -1,0 +1,9 @@
+*.o 
+*.out 
+*.app
+a.out 
+app 
+
+build/
+bin/
+obj/
