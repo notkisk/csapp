@@ -143,7 +143,8 @@ NOTES:
  *   Rating: 1
  */
 int bitXor(int x, int y) {
-  return 2;
+  /*xor is returns a high(1) when the two inputs are diffrent, normally, it consists of both the And and Or gates in addition to the not gate, we are only allowed to use the And et the Not gate*/ 
+  return ~(~(x&~y) & ~(~x&y));
 }
 /* 
  * tmin - return minimum two's complement integer 
@@ -153,7 +154,7 @@ int bitXor(int x, int y) {
  */
 int tmin(void) {
 
-  return 2;
+  return ~((1<<7));
 
 }
 //2
