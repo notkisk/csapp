@@ -168,7 +168,7 @@ int tmin(void) {
  */
 int isTmax(int x) {
   //tmax in 2's complement is of the form 0x7ffffff or 0 and followed by 31 1's (011111.....11)
-  return !((x^(x+1)) & 0x8fffffff);
+  return 2;
 }
 /* 
  * allOddBits - return 1 if all odd-numbered bits in word set to 1
@@ -179,7 +179,7 @@ int isTmax(int x) {
  *   Rating: 2
  */
 int allOddBits(int x) {
-  return x & 0xAAAAAAAA;
+  return 2;
 }
 /* 
  * negate - return -x 
@@ -189,7 +189,7 @@ int allOddBits(int x) {
  *   Rating: 2
  */
 int negate(int x) {
-  return x | 0x8fffffff;
+  return ~x + 1;
 }
 //3
 /* 
