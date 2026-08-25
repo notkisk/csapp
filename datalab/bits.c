@@ -143,18 +143,19 @@ NOTES:
  *   Rating: 1
  */
 int bitXor(int x, int y) {
-  /*xor is returns a high(1) when the two inputs are diffrent, normally, it consists of both the And and Or gates in addition to the not gate, we are only allowed to use the And et the Not gate*/ 
-  return ~(~(x&~y) & ~(~x&y));
+//xor, returns 1 only if both inputs (x and y) are diffrent, so 0 1 -> 1; 1 0 -> 1. we can't use the "or" | operator nor the xor logic operator ^
+  
+ return ~(~x&~y) & ~(x&y);
 }
 /* 
  * tmin - return minimum two's complement integer 
  *   Legal ops: ! ~ & ^ | + << >>
- *   Max ops: 4
+ *   Max ops: 
  *   Rating: 1
  */
 int tmin(void) {
 
-  return ~((1<<7));
+  return ((2 << 30));
 
 }
 //2
@@ -166,7 +167,8 @@ int tmin(void) {
  *   Rating: 1
  */
 int isTmax(int x) {
-  return 2;
+  //tmax in 2's complement is of the form 0x7ffffff or 0 and followed by 31 1's (011111.....11)
+  return !((x^(x+1)) & 0x8fffffff);
 }
 /* 
  * allOddBits - return 1 if all odd-numbered bits in word set to 1
@@ -177,7 +179,7 @@ int isTmax(int x) {
  *   Rating: 2
  */
 int allOddBits(int x) {
-  return 2;
+  return x & 0xAAAAAAAA;
 }
 /* 
  * negate - return -x 
@@ -187,7 +189,7 @@ int allOddBits(int x) {
  *   Rating: 2
  */
 int negate(int x) {
-  return 2;
+  return x | 0x8fffffff;
 }
 //3
 /* 
