@@ -206,7 +206,10 @@ int negate(int x) {
  *   Rating: 3
  */
 int isAsciiDigit(int x) {
-  return 2;
+  // what i'm thinking about is, we take x and substract 0x30 from it and simultaneosly we take 0x39 and substract x from it, if both results are 
+  // positive numbers(most significant bit is 0) then the number must sit inside the range 0x30<= x <= 0x39 
+  // the issue is we don't have - operator, the trick here is to use negation so it would looke something like x + (~0x30 +1)
+return !((x + (~0x30 + 1)) & (0x80 << 24)) & !((0x39 + (~x + 1)) & (0x80 << 24));
 }
 /* 
  * conditional - same as x ? y : z 
