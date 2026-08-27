@@ -168,7 +168,11 @@ int tmin(void) {
  */
 int isTmax(int x) {
   //tmax in 2's complement is of the form 0x7ffffff or 0 and followed by 31 1's (011111.....11)
-  return 2;
+  // !(x^0x7fffffff); this will return true only when numbers match, but its has one issue; when x is -1
+  // -1 in 2's complement is represented as 32 1's (111111111...11), tmax is 0 followed by 31 one's (01111111...11) -1^tmax is 
+  // it seems like we can't use numbers out of the range 0-255, so 0x7ffffffff is not allowed!
+  // integer constants larger than 255 are not allowed, but we can do a bit logical left shift
+  return !(x^~(0x80 << 24));
 }
 /* 
  * allOddBits - return 1 if all odd-numbered bits in word set to 1
